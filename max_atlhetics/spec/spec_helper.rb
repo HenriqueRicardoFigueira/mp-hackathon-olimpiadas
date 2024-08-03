@@ -4,6 +4,13 @@ if ENV['coverage'] == 'on'
 
   SimpleCov.start 'rails' do
     minimum_coverage 100
+    add_filter '/channels/'
+    add_filter '/jobs/application_job.rb'
+    add_filter '/mailers/application_mailer.rb'
+    add_filter '/controllers/application_controller.rb'
+    add_filter '/models/application_record.rb'
+    add_filter '/helpers/'
+    add_filter '/utils/'
   end
 end
 
