@@ -23,6 +23,7 @@ module MaxAtlhetics
     config.load_defaults 7.2
     config.autoload_lib(ignore: %w[assets tasks])
     config.api_only = true
+    config.active_job.queue_adapter = :good_job
 
     config.generators do |g|
       g.test_framework :rspec,
