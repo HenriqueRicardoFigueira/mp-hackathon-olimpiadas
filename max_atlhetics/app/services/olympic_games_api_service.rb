@@ -6,6 +6,7 @@ class OlympicGamesApiService < ApplicationService
   end
 
   def obtain_medals
-    Utils::HttpRequest.new.get("#{BASE_URL}countries")
+    response = Utils::HttpRequest.new.get("#{BASE_URL}countries")
+    JSON.parse(response.body)
   end
 end
