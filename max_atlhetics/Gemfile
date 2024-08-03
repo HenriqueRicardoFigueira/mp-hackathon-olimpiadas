@@ -12,8 +12,17 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem "faker"
   gem "dotenv-rails"
   gem "pry", "~> 0.14"
   gem "pry-byebug", "~> 3.10"
   gem "pry-rails"
+end
+
+group :test do
+  gem "simplecov", "~> 0.21", require: false
+  gem "simplecov_json_formatter"
+  gem "vcr", "~> 6.2"
+  gem "webmock"
+  gem "database_cleaner-active_record"
 end
