@@ -1,7 +1,7 @@
 class OlympicGamesApiService < ApplicationService
   BASE_URL = "https://apis.codante.io/olympic-games/"
 
-  def initialize(args)
+  def initialize(args = nil)
     @args = args
   end
 
