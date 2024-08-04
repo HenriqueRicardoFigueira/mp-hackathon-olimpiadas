@@ -18,8 +18,17 @@ class MessageService < ApplicationService
   def create_ranking_message
     countries.each.map do |country|
       flag = obtain_flag_icon(country.name)
-      "#{country.rank}º - #{flag} #{country.name} 🥇 #{country.total_medals} medalhas"
+      position = define_rank_position(country)
+      "#{position}º - #{flag} #{country.name} 🥇 #{country.total_medals} medalhas"
     end
+  end
+
+  def define_rank_position(country)
+    type == "rank" ? country.rank : country.rank_total_medals
+  end
+
+  def type
+    @args[:type] || "rank"
   end
 
   def countries

@@ -1,9 +1,8 @@
-require "yaml"
 
-module Ranking
+module RankingMedals
   extend Discordrb::Commands::CommandContainer
 
-  Bot.command(:ranking) do |event|
+  Bot.command(:ranking_medals) do |event|
     event.respond fetch_ranking_medals
   end
 
