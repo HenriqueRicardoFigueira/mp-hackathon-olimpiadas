@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: myapp_development
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && ./bin/rails server -b 0.0.0.0"
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - DATABASE_HOST=db
+    depends_on:
+      - db
+      - ollama_model
+
+  ollama_model:
+    image: ollama/ollama
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./model_data:/app/model_data

@@ -63,3 +63,8 @@ _site/
 .vscode/settings.json
 
 /coverage
+/config/credentials/development.key
+
+/config/credentials/test.key
+
+/config/credentials/production.key
